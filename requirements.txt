@@ -3,3 +3,4 @@ bs4
 selenium==4.8.2
 beautifulsoup4==4.11.1
 requests==2.31.0
+moviepy==1.0.3

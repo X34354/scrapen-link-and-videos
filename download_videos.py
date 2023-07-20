@@ -89,29 +89,32 @@ def clean_and_process_videos(data):
     videos = list(df['URL'])
     videos = videos[:100]
     i = 0
-
+    
     for video in videos:
-        nombre = video
-        lista = nombre.split('/')
-        nombre = lista[3] + '-' + lista[5]
-        print(nombre)
-        path_r = data['path'] + str(nombre) + '.mp4'
-        
+        try :
 
-        is_exist = os.path.exists(path_r)
+            nombre = video
+            lista = nombre.split('/')
+            nombre = lista[3] + '-' + lista[5]
+            print(nombre)
+            path_r = data['path'] + str(nombre) + '.mp4'
+            
+
+            is_exist = os.path.exists(path_r)
 
 
-        if is_exist :
-            continue
-        else:
-            try:
-                download_video(video, i)
-                time.sleep(30)
-            except:
-                print('Failed to download the video:', nombre)
-                time.sleep(30)
-        i += 1
-
+            if is_exist :
+                continue
+            else:
+                try:
+                    download_video(video, i)
+                    time.sleep(30)
+                except:
+                    print('Failed to download the video:', nombre)
+                    time.sleep(30)
+            i += 1
+        except :
+            print('error')
 if __name__ == "__main__":
     
     # Open the JSON file

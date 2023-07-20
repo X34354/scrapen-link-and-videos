@@ -41,7 +41,7 @@ class TikTokScraper:
             i += 1
             time.sleep(scroll_pause_time)
             scroll_height = self.driver.execute_script("return document.body.scrollHeight;")
-            if 1 > 0:
+            if (screen_height) * i > scroll_height:
                 break
 
     def extract_video_urls(self):
