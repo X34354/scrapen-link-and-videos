@@ -1,16 +1,12 @@
 
-# scrapen-link-and-videos
-=======
 # Scrapen-link-and-videos
->>>>>>> 4ddf444817c779e70ac6b60511a7017a898cb0ec
+
 
 ## Table of Contents
 
 - [About](#about)
 - [Getting Started](#getting_started)
-
 - [Usage](#usage)
-=======
 
 - [Contributing](../CONTRIBUTING.md)
 
