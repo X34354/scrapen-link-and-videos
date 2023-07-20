@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # scrapen-link-and-videos
 =======
 # Scrapen-link-and-videos
@@ -8,10 +8,10 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-<<<<<<< HEAD
+
 - [Usage](#usage)
 =======
->>>>>>> 4ddf444817c779e70ac6b60511a7017a898cb0ec
+
 - [Contributing](../CONTRIBUTING.md)
 
 ## About <a name = "about"></a>
@@ -34,8 +34,8 @@ requests==2.31.0
 
 pip install -r requirements.txt
 
-<<<<<<< HEAD
+
 run file main.py
 =======
 run file main.py
->>>>>>> 4ddf444817c779e70ac6b60511a7017a898cb0ec
+
