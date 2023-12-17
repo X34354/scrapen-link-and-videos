@@ -7,6 +7,9 @@ import pandas as pd
 import time
 import json
 
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
 class TikTokScraper:
     def __init__(self, url, file_path):
         self.url = url
@@ -14,16 +17,16 @@ class TikTokScraper:
         self.driver = None
 
     def open_profile(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get(self.url)
-        time.sleep(10)
+        time.sleep(20)
 
     def close_profile(self):
         self.driver.quit()
 
     def scroll_page(self):
         action = ActionChains(self.driver)
-        firstLevelMenu = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/p[3]/span')
+        firstLevelMenu = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[2]/div/div/div[2]/div/p[3]')
         l = firstLevelMenu.location
         s = firstLevelMenu.size
         time.sleep(5)
@@ -43,10 +46,10 @@ class TikTokScraper:
             scroll_height = self.driver.execute_script("return document.body.scrollHeight;")
             if (screen_height) * i > scroll_height:
                 break
-
     def extract_video_urls(self):
+        #print(self.driver.page_source)
         soup = BeautifulSoup(self.driver.page_source, "html.parser")
-        videos = soup.find_all("div", {"class": "tiktok-c83ctf-DivWrapper"})
+        videos = soup.find_all("div", {"class": "css-vi46v1-DivDesContainer eih2qak4"})
         dataframe = {}
         links = []
         indexs = []
@@ -68,7 +71,7 @@ class TikTokScraper:
                 pass
         except FileNotFoundError:
             data_antigua = pd.DataFrame()
-
+        print(data_antigua)
         return data_antigua
 
     def save_data(self, df):
@@ -80,11 +83,12 @@ class TikTokScraper:
         self.open_profile()
         self.scroll_page()
         df = self.extract_video_urls()
+        print(df)
         self.close_profile()
 
         existing_data = self.load_existing_data()
-        df =pd.concat([ existing_data , df ], 0)
-
+        #df =pd.concat([ existing_data , df ], 0)
+        print(df)
         self.save_data(df)
 
 

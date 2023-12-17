@@ -34,9 +34,9 @@ if __name__ == "__main__":
         archivos = os.listdir(carpeta)
         for archivo in archivos:
             archivo_path = os.path.join(carpeta, archivo)
-            if is_video(archivo_path):
+            try: 
                 video_salida = 'videos_to_narrate_volume/' + archivo
                 video_path = os.path.join(carpeta, archivo)
                 cambiar_volumen(video_path, decibelios_deseados, video_salida)
-            else:
-                print(f"{archivo} no es un archivo de video y será omitido.")
+            except:
+                print(f"{archivo} error")
